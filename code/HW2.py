@@ -151,13 +151,14 @@ print('Accuracy(Decision Tree): ',correct_count/len(comp))
 ### SVM
 #########################################
 svm = SVC(kernel='rbf')
+print('#########################################')
+print(svm)
 svm = svm.fit(x_train, y_train)
 # Predicting results for test dataset
 y_pred_svm = svm.predict(x_test)
 submission = pd.DataFrame({"PassengerId": PassengerId, "Survived_predict": y_pred_svm })
 submission.to_csv('../results/submission_svm.csv', index=False)
 #########################################
-print('#########################################')
 print('\nSVM Cross Validation:')
 scores = cross_validate(svm, train.drop(['Survived'], axis=1), y_train, cv=10, scoring='accuracy')
 for item in scores.items():
@@ -178,6 +179,8 @@ print('#########################################')
 #########################################
 # multi-layer perceptron (MLP) algorithm (training using Backpropagation)
 nn = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(10, 2), random_state=1)
+print('#########################################')
+print('NN: ',nn)
 nn = nn.fit(x_train, y_train)
 y_pred_nn = nn.predict(x_test)
 submission = pd.DataFrame({"PassengerId": PassengerId, "Survived_predict": y_pred_nn })
