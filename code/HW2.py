@@ -152,7 +152,7 @@ print('Accuracy(Decision Tree): ',correct_count/len(comp))
 #########################################
 svm = SVC(kernel='rbf')
 print('#########################################')
-print(svm)
+print('SVM: ',svm)
 svm = svm.fit(x_train, y_train)
 # Predicting results for test dataset
 y_pred_svm = svm.predict(x_test)
@@ -172,7 +172,6 @@ print('#########################################')
 #print('#########################################')
 correct_count = comp[comp.Survived == comp.Survived_predict].count().values[0]
 print('Accuracy(SVM): ',correct_count/len(comp))
-print('#########################################')
 
 ##########################################
 ### NN
